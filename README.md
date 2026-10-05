@@ -6,30 +6,30 @@ An intelligent restaurant order processing agent built with **LangGraph**, **Lan
 
 ```mermaid
 flowchart TD
-    START([User Input]) --> intake[order_intake]
+    START([User Input]) --> intake["order_intake"]
     
-    intake -->|Unrelated query| rejected[Reject & Prompt: Food Only] --> END_NODE([End])
-    intake -->|Food order| confirmed_node[order_confirmed]
+    intake -->|"Unrelated query"| rejected["Reject & Prompt: Food Only"] --> END_NODE([End])
+    intake -->|"Food order"| confirmed_node["order_confirmed"]
     
-    confirmed_node --> decision_node[order_decision]
+    confirmed_node --> decision_node["order_decision"]
     
-    decision_node -->|Available (confirmed)| cook[cook]
-    decision_node -->|Partial / Unavailable| wait_user[Prompt User / Wait]
+    decision_node -->|"Available: Confirmed"| cook["cook"]
+    decision_node -->|"Partial or Unavailable"| wait_user["Prompt User / Wait"]
     
-    wait_user --> user_decision[handle_user_decision]
-    user_decision -->|Accept partial| cook
-    user_decision -->|New order (Retry -1)| confirmed_node
-    user_decision -->|Cancel / Retries exhausted| apology[apology] --> END_NODE
+    wait_user --> user_decision["handle_user_decision"]
+    user_decision -->|"Accept partial"| cook
+    user_decision -->|"New order (Retry -1)"| confirmed_node
+    user_decision -->|"Cancel or Retries exhausted"| apology["apology"] --> END_NODE
     
-    cook --> cook_check[cook_decision]
-    cook_check -->|Cook Success (60%)| serve[serve]
-    cook_check -->|Cook Fail (40%) & Retries > 0| cook
-    cook_check -->|Cook Fail & Retries = 0| apology
+    cook --> cook_check{"cook_decision"}
+    cook_check -->|"Cook Success (60%)"| serve["serve"]
+    cook_check -->|"Cook Fail (40%) and Retries > 0"| cook
+    cook_check -->|"Cook Fail and Retries = 0"| apology
     
-    serve --> serve_check[serve_decision]
-    serve_check -->|Serve Success| complete[order_complete] --> END_NODE
-    serve_check -->|Serve Fail & Serve/Cook Retries > 0| cook
-    serve_check -->|Serve Fail & Retries = 0| apology
+    serve --> serve_check{"serve_decision"}
+    serve_check -->|"Serve Success"| complete["order_complete"] --> END_NODE
+    serve_check -->|"Serve Fail and Retries > 0"| cook
+    serve_check -->|"Serve Fail and Retries = 0"| apology
 ```
 
 ---
