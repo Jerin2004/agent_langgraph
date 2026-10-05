@@ -6,3 +6,5 @@ langchain-google-genai>=4.4.0
 pydantic>=2.13.5
 python-dotenv>=1.2.4
 typing-extensions>=4.16.0
+fastapi>=0.115.0
+uvicorn>=0.30.0

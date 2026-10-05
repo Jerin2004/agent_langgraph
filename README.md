@@ -52,13 +52,28 @@ flowchart TD
 
 ## Quickstart
 
-### 1. Run Interactive CLI
-You can place orders interactively in your terminal:
+### 1. Run Modern Web UI (Recommended 🌟)
+Launch the interactive web application:
+```bash
+python -m uvicorn server:app --reload
+```
+Open **[http://localhost:8000](http://localhost:8000)** in your browser to interact with:
+- **Live Kitchen Menu & Stock**: Real-time dish availability cards.
+- **Interactive AI Chat**: Order assistant with conversational feedback and quick-response buttons.
+- **Visual LangGraph Pipeline Stepper**: Live highlight of active nodes (`Intake` ➔ `Menu Confirmation` ➔ `Kitchen Cooking` ➔ `Table Service` ➔ `Completion`).
+- **Live Retry Counters**: Real-time progress bars for Order, Cook, and Serve retries.
+
+---
+
+### 2. Run Interactive Terminal CLI
+You can also run orders directly in your terminal:
 ```bash
 python main.py
 ```
 
-### 2. Run Test Simulations
+---
+
+### 3. Run Automated Test Simulations
 To run all automated simulation test cases:
 ```bash
 python simulate.py
